@@ -8,6 +8,7 @@ int pasarPila(Pila *pila1, int arreglo[], int validos);
 int buscarMayorNota(int arreglo[], int validos);
 void pasarPila2(Pila *A, Pila *B);
 int pasarArreglo(Pila *pilaB, int arreglo[], int dim);
+float pasarpromedio (int arreglo[], int validos);
 int main()
 {
 
@@ -15,6 +16,7 @@ int main()
     int arregloPila[99];
     int validos;
     int mayorNota;
+    float promedio1;
     Pila pila1, aux, aux2;
     inicpila(&pila1);
     inicpila(&aux);
@@ -37,6 +39,8 @@ int main()
     validos = pasarArreglo(&aux2, arregloPila, 99);
     mostrarArreglo(arregloPila, validos);
     mostrar(&aux2);
+    promedio1 = pasarpromedio(arregloPila, validos);
+    printf("%.2f", promedio1);
 }
 
 int cargarArreglo(int arreglo[], int dim)
@@ -252,4 +256,23 @@ int pasarArreglo(Pila *B, int arreglo[], int dim)
         apilar(B,desapilar(&aux));
     }
     return i;
+}
+
+
+float pasarpromedio (int arreglo[], int validos){
+    int i = validos-1;
+    float suma = 0;
+    float promedio;
+    int cant;
+    while(i>=0){
+
+        suma = suma + arreglo[i];
+        cant = cant + 1;
+        i = i-2;
+
+    }
+
+    promedio = suma / cant;
+
+    return promedio;
 }
